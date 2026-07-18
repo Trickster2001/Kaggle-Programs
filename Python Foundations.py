@@ -248,3 +248,106 @@ def rockPaperScissor(p1, p2):
         return "P2 Wins"
     else:
         return "P1 Wins"
+
+
+## Lists
+# Find the Largest
+def largestNumber(myList):
+    a = 0
+    if(len(myList) == 0):
+        return 0
+    else:
+        a = myList[0]
+    if(len(myList)>1):
+        for i in myList:
+            if a < i:
+                a = i
+    return a
+
+# Find the Smallest
+def smallestNumber(myList):
+    a = 0
+    if(len(myList) == 0):
+        return 0
+    else:
+        a = myList[0]
+    if(len(myList)>1):
+        for i in myList:
+            if a > i:
+                a = i
+    return a
+
+# Remove the Duplicates
+def removeDuplicates(myList):
+    finalList = []
+    for i in myList:
+        if i in finalList:
+            continue
+        else:
+            finalList.append(i)
+    return finalList
+
+# Reverse List
+def revList(myList):
+    finalList = myList.copy()
+    for i in range(0, math.floor( len(myList)/2)):
+        finalList[i], finalList[len(finalList)-1-i] = finalList[len(finalList)-1-i], finalList[i]
+    return finalList
+
+# Rotate List
+def rotaList(n, myList):
+    finalList = myList.copy()
+    n = n % len(finalList) 
+    for i in range(0, n):
+        a = finalList.pop(0)
+        finalList.append(a)
+    return finalList
+
+# Second Largest
+def secondLarget(myList):
+    unique_nums = list(set(myList))
+    if len(unique_nums) < 2:
+        return None
+    unique_nums.sort()
+    return unique_nums[-2]
+
+# Count Frequency
+def countFrequency(myList):
+    finalList = {}
+    for i in myList:
+        if i in finalList:
+            finalList[i] += 1
+        else:
+            finalList[i] = 1
+    return finalList
+
+# Merge Lists
+def mergeLists(myList1, myList2):
+    finalList = myList1+myList2
+    return finalList
+
+# Sort List
+def sortList(myList):
+    for j in range(len(myList)):
+        for i in range(0, len(myList) - 1):
+            if myList[i] > myList[i+1]:
+                myList[i], myList[i+1] = myList[i+1], myList[i]
+    return myList
+
+# Binary Search
+def binarySearch(myList, target):
+    myList.sort()
+    low = 0
+    high = len(myList) - 1
+
+    while low<=high:
+        mid = low + (high-low) // 2
+
+        if myList[mid] == target:
+            return mid
+        elif myList[mid] < target:
+            high = mid + 1
+        else:
+            low = mid - 1
+    
+    return -1

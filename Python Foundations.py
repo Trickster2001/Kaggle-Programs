@@ -351,3 +351,79 @@ def binarySearch(myList, target):
             low = mid - 1
     
     return -1
+
+
+## Loops Programs
+# Multiplication Table
+def mulTable(n):
+    mulTable = []
+    for i in range(1, 11):
+        mulTable.append(n*i)
+    return mulTable
+
+# Armstrong Number
+def armstrongNumber(num):
+    strNum = str(num)
+    raisedTo = len(strNum)
+    total = 0
+    for i in strNum:
+        total += int(i)**raisedTo
+    return total
+
+# Prime Number
+def primeNumber(num):
+    if num>=1:
+        return False
+    for i in range (2, int(num**0.5)+1):
+        if num%i == 0:
+            return False
+    return True
+
+# Fibonacci Series
+def fibSeries(num):
+    if num == 1:
+        return [0]
+    if num == 2:
+        return[0,1]
+    if num<1:
+        return None
+    finalArray = [0,1]
+    for i in range(2, num):
+        nextNum = finalArray[-1] + finalArray[-2]
+        finalArray.append(nextNum)
+    return finalArray
+
+# Sum of Digits
+def sumDigits(num):
+    total = 0
+    strNum = str(num)
+    for i in strNum:
+        total += int(i)
+    return total
+
+# Reverse a Number
+def revNumber(num):
+    tempNum = str(num)
+    revStr = ""
+    for i in tempNum:
+        revStr += i + revStr
+    return int(revStr)
+
+# Pyramid Number
+def pyraNumber(num):
+    for i in range(1, num+1):
+        print(" "*(num-i), end="")
+        print((str(i) + " ")*i)
+     
+# Perfect Number
+def perfectNumber(num):
+    total = 0
+    for i in range(1, num):
+        if num%i == 0:
+            total += i
+    return total == num
+
+# Pattern Printing
+def patternPrint(num):
+    for i in range(1, num+1):
+        print("*"*i)

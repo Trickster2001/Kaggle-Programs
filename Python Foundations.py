@@ -427,3 +427,114 @@ def perfectNumber(num):
 def patternPrint(num):
     for i in range(1, num+1):
         print("*"*i)
+
+
+## Strings
+# Count Vowels
+def countVowels(myStr):
+    vow = ["a", "e", "i", "o", "u"]
+    total = 0
+    for i in myStr.lower():
+        if i in vow:
+            total += 1
+    return total
+
+# Reverse String
+def revString(myStr):
+    return myStr[::-1]
+
+# Check Palindrome
+def chkPalindrome(myStr):
+    return myStr == myStr[::-1]
+
+# Word Frequency
+def wordFreq(mySen):
+    myDic = {}
+    words = mySen.split()
+    for i in words:
+        if i in myDic:
+            myDic[i] += 1
+        else:
+            myDic[i] = 1
+    return myDic
+
+# Character Frequency
+def wordFreq(myStr):
+    myDic = {}
+    for i in myStr:
+        if i in myDic:
+            myDic[i] += 1
+        else:
+            myDic[i] = 1
+    return myDic
+
+# Remove Punctuation
+import string
+def removePunc(mySen):
+    myDic = {}
+    words = mySen.split()
+    
+    for word in words:
+        # Strip all punctuation marks from the outer edges of the word
+        clean_word = word.strip(string.punctuation).lower()
+        
+        if clean_word:
+            myDic[clean_word] = myDic.get(clean_word, 0) + 1
+            
+    return myDic
+
+# Capitalize Words
+def capitalizeWords(mySen):
+    return mySen.capitalize()
+
+# Find Longest Word
+def longestWord(mySen):
+    length = 0
+    lWord = ""
+    words = mySen.split()
+    for i in words:
+        if length < len(i):
+            length = len(i)
+            lWord = i
+    return lWord
+
+# Caesar Cipher
+def caesarCipher(myStr, shift):
+    res = ""
+    shift = shift%26
+
+    for char in myStr:
+        if char.isUpper():
+            new_char = chr((ord(char)-65 + shift)%26 + 65)
+            res += new_char
+        elif char.isLower():
+            new_char = chr((ord(char) - 97 + shift)%26 + 97)
+            res += new_char
+        else:
+            res += char
+
+    return res
+
+# Password Validator
+def passValidator(password):
+    if len(password) < 8:
+        return False
+
+    has_upper = False
+    has_lower = False
+    has_digit = False
+    has_special = False
+    
+    special_chars = "@#$%^&+=!"
+
+    for char in password:
+        if char.isupper():
+            has_upper = True
+        elif char.islower():
+            has_lower = True
+        elif char.isdigit():
+            has_digit = True
+        elif char in special_chars:
+            has_special = True
+
+    return has_upper and has_lower and has_digit and has_special

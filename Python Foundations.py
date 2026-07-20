@@ -538,3 +538,84 @@ def passValidator(password):
             has_special = True
 
     return has_upper and has_lower and has_digit and has_special
+
+
+## Dictonaries
+# Student Grade System
+def stdGradeSystem(subject_db):
+    student_db = {}
+
+    for subject, students in subject_db.items():
+        
+        for student_id, data in students.items():
+            
+            if student_id not in student_db:
+                student_db[student_id] = {
+                    "name": data["name"],
+                    "marks": {},
+                    "grades": {}
+                }
+            
+            student_db[student_id]["marks"][subject] = data["marks"]
+            student_db[student_id]["grades"][subject] = data["grade"]
+
+    return student_db
+
+# Word Counter
+def wordCounter(myArr):
+    finalCounter = {}
+
+    for word in myArr:
+        if word in finalCounter:
+            finalCounter[word] += 1
+        else:
+            finalCounter[word] = 1
+    
+    return finalCounter
+
+# Phone Book
+def phoneBook(myArr):
+    finalResult = {}
+
+    for contact in myArr:
+        finalResult[contact] = myArr[contact]["mobile"]
+    return finalResult
+
+# Inventory Management
+def inventoryManagement(myArr):
+    output = {"Available":{}, "OutofStock":{}}
+
+    for category, products in myArr.items():
+
+        for productId, data in products.items():
+
+            if data["stock"] <= 0:
+                output["OutofStock"][productId] = {
+                    "name": data["name"],
+                    "stock": data["stock"]
+                }
+            else:
+                output["Available"][productId] = {
+                    "name": data["name"],
+                    "stock": data["stock"]
+                }
+    
+    return output
+
+# Voting System
+def votingSystem(myArr):
+    output = {}
+
+    for booth in myArr:
+        for rep, votes in booth.items():
+            if rep in output:
+                output[rep] += votes
+            else:
+                output[rep] = votes
+    return output
+
+# Employee Salary Lookup
+def empSalary(empData, empCode):
+    for data in empData:
+        if data["empId"] == empCode:
+            return data["salary"]
